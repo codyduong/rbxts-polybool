@@ -6,7 +6,7 @@
 // Project Home: https://github.com/codyduong/rbxts-polybool
 // SPDX-License-Identifier: 0BSD
 //
-// rbxts       version: 0.1.0     (https://github.com/codyduong/rbxts-polybool/releases/tag/v0.1.0)
+// rbxts       version: 0.1.1     (https://github.com/codyduong/rbxts-polybool/releases/tag/0.1.1)
 // polybool    version: 2.0.11    (https://github.com/velipso/polybool/releases/tag/v2.0.11)
 //
 
@@ -155,10 +155,52 @@ export class GeometryEpsilon extends Geometry {
   }
 }
 
-export function intoVec2(vector2: Vector2): Vec2 {
+// checks if something is array by simply checking if it has a size
+const quickarray = (u: unknown): u is unknown[] => {
+  return (
+    typeIs(u, "table") &&
+    typeIs((u as Record<string, unknown>).size, "function") &&
+    typeIs((u as { size: (...args: unknown[]) => unknown }).size(), "number")
+  );
+};
+
+export function isVector2(u: unknown): u is Vector2 {
+  return typeIs(u, "Vector2");
+}
+
+export function isVec2(u: unknown): u is Vec2 {
+  return quickarray(u) && u.size() === 2 && typeIs(u[0], "number") && typeIs(u[1], "number");
+}
+
+export function isVec6(u: unknown): u is Vec2 {
+  return (
+    quickarray(u) &&
+    u.size() === 6 &&
+    typeIs(u[0], "number") &&
+    typeIs(u[1], "number") &&
+    typeIs(u[2], "number") &&
+    typeIs(u[3], "number") &&
+    typeIs(u[4], "number") &&
+    typeIs(u[5], "number")
+  );
+}
+
+export function intoVec2(vector2: Vector2): Vec2;
+export function intoVec2(vector2: unknown): Vec2 {
+  assert(isVector2(vector2));
   return [vector2.X, vector2.Y];
 }
 
-export function intoVector2(vec2: Vec2): Vector2 {
-  return new Vector2(vec2[0], vec2[1]);
+export function intoVector2(vec2: Vec2): Vector2;
+export function intoVector2(vec2: Vec6): Vector2;
+export function intoVector2(vec2: Vec2 | Vec6): Vector2;
+export function intoVector2(u: unknown): Vector2 {
+  assert(isVec2(u) || isVec6(u));
+
+  if (isVec2(u)) {
+    return new Vector2(u[0], u[1]);
+  }
+  print(debug.traceback("Polybool: coerced Vec6 as Vec2 in order to convert it to Vec2"));
+
+  return new Vector2(u[0], u[1]);
 }

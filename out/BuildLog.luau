@@ -7,7 +7,7 @@
 -- Project Home: https://github.com/codyduong/rbxts-polybool
 -- SPDX-License-Identifier: 0BSD
 --
--- rbxts       version: 0.1.0     (https://github.com/codyduong/rbxts-polybool/releases/tag/v0.1.0)
+-- rbxts       version: 0.1.1     (https://github.com/codyduong/rbxts-polybool/releases/tag/0.1.1)
 -- polybool    version: 2.0.11    (https://github.com/velipso/polybool/releases/tag/v2.0.11)
 --
 -- eslint-disable @typescript-eslint/explicit-function-return-type 

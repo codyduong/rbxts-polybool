@@ -7,7 +7,7 @@
 -- Project Home: https://github.com/codyduong/rbxts-polybool
 -- SPDX-License-Identifier: 0BSD
 --
--- rbxts       version: 0.1.0     (https://github.com/codyduong/rbxts-polybool/releases/tag/v0.1.0)
+-- rbxts       version: 0.1.1     (https://github.com/codyduong/rbxts-polybool/releases/tag/0.1.1)
 -- polybool    version: 2.0.11    (https://github.com/velipso/polybool/releases/tag/v2.0.11)
 --
 -- eslint-disable @typescript-eslint/explicit-function-return-type 
@@ -165,16 +165,85 @@ do
 		return if a[1] < b[1] then -1 else 1
 	end
 end
+-- checks if something is array by simply checking if it has a size
+local quickarray = function(u)
+	local _u = u
+	local _condition = type(_u) == "table"
+	if _condition then
+		local _size = u.size
+		_condition = type(_size) == "function"
+		if _condition then
+			local _arg0 = u.size()
+			_condition = type(_arg0) == "number"
+		end
+	end
+	return _condition
+end
+local function isVector2(u)
+	local _u = u
+	return typeof(_u) == "Vector2"
+end
+local function isVec2(u)
+	local _condition = quickarray(u) and #u == 2
+	if _condition then
+		local _arg0 = u[1]
+		_condition = type(_arg0) == "number"
+		if _condition then
+			local _arg0_1 = u[2]
+			_condition = type(_arg0_1) == "number"
+		end
+	end
+	return _condition
+end
+local function isVec6(u)
+	local _condition = quickarray(u) and #u == 6
+	if _condition then
+		local _arg0 = u[1]
+		_condition = type(_arg0) == "number"
+		if _condition then
+			local _arg0_1 = u[2]
+			_condition = type(_arg0_1) == "number"
+			if _condition then
+				local _arg0_2 = u[3]
+				_condition = type(_arg0_2) == "number"
+				if _condition then
+					local _arg0_3 = u[4]
+					_condition = type(_arg0_3) == "number"
+					if _condition then
+						local _arg0_4 = u[5]
+						_condition = type(_arg0_4) == "number"
+						if _condition then
+							local _arg0_5 = u[6]
+							_condition = type(_arg0_5) == "number"
+						end
+					end
+				end
+			end
+		end
+	end
+	return _condition
+end
 local function intoVec2(vector2)
+	local _arg0 = isVector2(vector2)
+	assert(_arg0)
 	return { vector2.X, vector2.Y }
 end
-local function intoVector2(vec2)
-	return Vector2.new(vec2[1], vec2[2])
+local function intoVector2(u)
+	local _arg0 = isVec2(u) or isVec6(u)
+	assert(_arg0)
+	if isVec2(u) then
+		return Vector2.new(u[1], u[2])
+	end
+	print(debug.traceback("Polybool: coerced Vec6 as Vec2 in order to convert it to Vec2"))
+	return Vector2.new(u[1], u[2])
 end
 return {
 	lerp = lerp,
 	lerpVec2 = lerpVec2,
 	boundingBoxesIntersect = boundingBoxesIntersect,
+	isVector2 = isVector2,
+	isVec2 = isVec2,
+	isVec6 = isVec6,
 	intoVec2 = intoVec2,
 	intoVector2 = intoVector2,
 	Geometry = Geometry,
