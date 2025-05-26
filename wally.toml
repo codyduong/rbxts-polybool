@@ -1,0 +1,21 @@
+[package]
+name = "codyduong/polybool"
+description = "Boolean operations on polygons (union, intersection, difference, xor)"
+version = "0.1.0"
+author = "Cody Duong <cody.qd@gmail.com> (https://codyduong.dev)"
+registry = "https://github.com/UpliftGames/wally-index"
+realm = "shared"
+license = "0BSD"
+exclude = ["*"]
+include = [
+  "out",
+  "out/*.luau",
+  "default.project.json",
+  "wally.lock",
+  "wally.toml",
+  "LICENSE",
+  "README.md"
+]
+repository = "https://github.com/codyduong/rbxts-polybool"
+
+[dependencies]
