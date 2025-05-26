@@ -3,8 +3,7 @@
 > [!NOTE]
 > This is a port of the https://github.com/velipso/polybool specifically for the [`roblox-ts`](https://roblox-ts.com/) environment
 
-This means it is available both as a package for those using roblox-ts, or you can install the compiled or resulting package
-if you are using rojo, or even roblox studio directly.
+This means it is available both as a package for those using roblox-ts or as a lua library.
 
 ## Installing
 
@@ -17,7 +16,8 @@ If you are using a lua package manager:
 - `wally install codyduong/polybool`
 
 If you want the raw files (if you are using lua you only need lua files):
-- See latest release: [https://github.com/codyduong/rbxts-polybool/releases/latest]
+- See latest release: https://github.com/codyduong/rbxts-polybool/releases/latest
+- Or simply look in /out/
 
 ## Example and Usage
 
