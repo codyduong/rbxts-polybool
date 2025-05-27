@@ -7,7 +7,7 @@
 -- Project Home: https://github.com/codyduong/rbxts-polybool
 -- SPDX-License-Identifier: 0BSD
 --
--- rbxts       version: 0.1.1     (https://github.com/codyduong/rbxts-polybool/releases/tag/0.1.1)
+-- rbxts       version: 0.1.2     (https://github.com/codyduong/rbxts-polybool/releases/tag/0.1.2)
 -- polybool    version: 2.0.11    (https://github.com/velipso/polybool/releases/tag/v2.0.11)
 --
 -- eslint-disable @typescript-eslint/explicit-function-return-type 
@@ -170,12 +170,8 @@ local quickarray = function(u)
 	local _u = u
 	local _condition = type(_u) == "table"
 	if _condition then
-		local _size = u.size
-		_condition = type(_size) == "function"
-		if _condition then
-			local _arg0 = u.size()
-			_condition = type(_arg0) == "number"
-		end
+		local _arg0 = #u
+		_condition = type(_arg0) == "number"
 	end
 	return _condition
 end
