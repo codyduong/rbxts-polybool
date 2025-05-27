@@ -1,7 +1,7 @@
 [package]
 name = "codyduong/polybool"
 description = "Boolean operations on polygons (union, intersection, difference, xor)"
-version = "0.1.1"
+version = "0.1.2"
 author = "Cody Duong <cody.qd@gmail.com> (https://codyduong.dev)"
 registry = "https://github.com/UpliftGames/wally-index"
 realm = "shared"

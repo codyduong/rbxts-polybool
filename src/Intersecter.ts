@@ -6,7 +6,7 @@
 // Project Home: https://github.com/codyduong/rbxts-polybool
 // SPDX-License-Identifier: 0BSD
 //
-// rbxts       version: 0.1.1     (https://github.com/codyduong/rbxts-polybool/releases/tag/0.1.1)
+// rbxts       version: 0.1.2     (https://github.com/codyduong/rbxts-polybool/releases/tag/0.1.2)
 // polybool    version: 2.0.11    (https://github.com/velipso/polybool/releases/tag/v2.0.11)
 //
 
