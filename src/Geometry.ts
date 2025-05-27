@@ -157,11 +157,7 @@ export class GeometryEpsilon extends Geometry {
 
 // checks if something is array by simply checking if it has a size
 const quickarray = (u: unknown): u is unknown[] => {
-  return (
-    typeIs(u, "table") &&
-    typeIs((u as Record<string, unknown>).size, "function") &&
-    typeIs((u as { size: (...args: unknown[]) => unknown }).size(), "number")
-  );
+  return typeIs(u, "table") && typeIs((u as unknown[]).size(), "number");
 };
 
 export function isVector2(u: unknown): u is Vector2 {
